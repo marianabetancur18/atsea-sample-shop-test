@@ -1,0 +1,34 @@
+{
+  "name": "atsea-sample-shop-test",
+  "version": "1.0.0",
+  "description": "tests for atsea-sample-shop-app",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha, protractor dist/protractor/local.config.js",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marianabetancur18/atsea-sample-shop-test.git"
+  },
+  "keywords": [
+    "api-testing",
+    "dojo",
+    "practice",
+    "ui-testing",
+    "protractor"
+  ],
+  "author": "mariana betancur <mbetancurf@unal.edu.co> (marianabetancur18)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marianabetancur18/atsea-sample-shop-test/issues"
+  },
+  "homepage": "https://github.com/marianabetancur18/atsea-sample-shop-test#readme",
+  "dependencies": {
+    "typescript": "^4.5.2"
+  }
+}
