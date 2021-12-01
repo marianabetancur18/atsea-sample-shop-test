@@ -36,9 +36,7 @@ describe('Atsea shop API Endpoint Customer Requests', () => {
         .set('User-Agent', 'agent')
         .set('Content-Type', 'application/json')
         .send(register);
-      customerId = response.body.customerIf;
-      customerName = response.body.name;
-      customerUsername = response.body.username;
+      customerId = response.body.customerId;
     });
 
     it('Then the register should be posted and the costumer should be created', () => {
@@ -51,18 +49,20 @@ describe('Atsea shop API Endpoint Customer Requests', () => {
     before(async () => {
       response = await get(`${host}/api/customer/${customerId}`)
         .set('User-Agent', 'agent');
+        customerName = response.body.name;
+        customerUsername = response.body.username;
     });
 
     it('Then a customer should be obtained', () => {
       expect(response.status).to.equal(StatusCodes.OK);
       expect(response.body.email).to.equal('sally@example.com');
-      expect(response.body.username).to.equal(customerUsername);
+      expect(response.body.username).to.equal('sallyv');
       expect(response.body.customerIf).to.equal(customerId);
     });
   });
 
     // Third test
-    describe('Get Customer by Name', () => {
+    describe(`Get Customer by Name ${customerName}`, () => {
         before(async () => {
           response = await get(`${host}/api/customer/name=${customerName}`)
             .set('User-Agent', 'agent');

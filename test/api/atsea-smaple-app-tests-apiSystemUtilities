@@ -1,0 +1,42 @@
+// Imported all dependencies needed
+import { get } from 'superagent';
+import { StatusCodes } from 'http-status-codes';
+import { expect } from 'chai';
+
+// Host for all requests
+const host = `http://localhost:8080`;
+
+// System Utilities tests
+describe('Atsea shop API Endpoint Login & Purchase Requests', () => {
+
+    // Variables needed for the code to be easily read
+    let response;
+
+    // First test
+    describe('Database Healthcheck', () => {
+        before(async () => {
+            response = await get(`${host}/utility/healthcheck/`)
+                .set('User-Agent', 'agent')
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+        });
+
+        it('Then the Database Healthcheck should be checked', () => {
+            expect(response.status).to.equal(StatusCodes.OK);
+        });
+    });
+
+    describe('Get Container Id', () => {
+        before(async () => {
+            response = await get(`${host}/utility/containerid/`)
+                .set('User-Agent', 'agent')
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+        });
+
+        it('Then the Container Id should be acquired', () => {
+            expect(response.status).to.equal(StatusCodes.OK);
+        });
+    });
+    
+});
