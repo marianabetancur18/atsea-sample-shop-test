@@ -31,6 +31,7 @@ describe('Atsea shop API Endpoint Product Requests', () => {
       response = await get(`${host}/api/product/1`);
       singleProduct = response.body;
     });
+    
     it('Then product with the productId:1 should be obtained', () => {
       expect(singleProduct.productId).to.equal(1);
       expect(singleProduct.name).to.equal('Unusable Security');
