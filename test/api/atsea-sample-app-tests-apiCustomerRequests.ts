@@ -19,25 +19,35 @@ const register = {
     role: "USER"
 };
 
+
+// Customer tests
 describe('Atsea shop API Endpoint Customer Requests', () => {
 
     // Variables needed for the code to be easily read
     let response;
     let customerId;
+    let customerName;
+    let customerUsername;
 
-  describe('Creating a customer user', () => {
+    // First test
+  describe('Create Customer', () => {
     before(async () => {
       response = await post(`${host}/api/customer/`)
         .set('User-Agent', 'agent')
         .set('Content-Type', 'application/json')
         .send(register);
-      customerId = response.body.customerId;
+      customerId = response.body.customerIf;
+      customerName = response.body.name;
+      customerUsername = response.body.username;
     });
-    it('Then an user should be created', () => {
+
+    it('Then the register should be posted and the costumer should be created', () => {
       expect(response.status).to.equal(StatusCodes.CREATED);
     });
   });
-  describe('Getting a customer', () => {
+
+  // Second test
+  describe('Get Customer', () => {
     before(async () => {
       response = await get(`${host}/api/customer/${customerId}`)
         .set('User-Agent', 'agent');
@@ -45,17 +55,49 @@ describe('Atsea shop API Endpoint Customer Requests', () => {
 
     it('Then a customer should be obtained', () => {
       expect(response.status).to.equal(StatusCodes.OK);
-      expect(response.body.email).to.equal('gfreeman@gmail.com');
-      expect(response.body.username).to.equal('gordonf');
+      expect(response.body.email).to.equal('sally@example.com');
+      expect(response.body.username).to.equal(customerUsername);
       expect(response.body.customerIf).to.equal(customerId);
     });
   });
 
-  describe('Deleting a customer', () => {
+    // Third test
+    describe('Get Customer by Name', () => {
+        before(async () => {
+          response = await get(`${host}/api/customer/name=${customerName}`)
+            .set('User-Agent', 'agent');
+        });
+    
+        it('Then a customer should be obtained', () => {
+          expect(response.status).to.equal(StatusCodes.OK);
+          expect(response.body.email).to.equal('sally@example.com');
+          expect(response.body.username).to.equal(customerUsername);
+          expect(response.body.name).to.equal(customerName);
+        });
+      });
+
+    // Fourth test
+    describe('Get Customer by Username', () => {
+        before(async () => {
+          response = await get(`${host}/api/customer/username=${customerUsername}`)
+            .set('User-Agent', 'agent');
+        });
+    
+        it('Then a customer should be obtained', () => {
+          expect(response.status).to.equal(StatusCodes.OK);
+          expect(response.body.email).to.equal('sally@example.com');
+          expect(response.body.username).to.equal(customerUsername);
+          expect(response.body.name).to.equal(customerName);
+        });
+      });
+
+  // Fifth test
+  describe('Delete all Customers', () => {
     before(async () => {
-      response = await del(`${host}/api/customer/${customerId}`);
+      response = await del(`${host}/api/customer/`);
     });
-    it('Then an customer should be deleted', () => {
+
+    it('Then all customers should be deleted', () => {
       expect(response.status).to.equal(StatusCodes.NO_CONTENT);
     });
   });
