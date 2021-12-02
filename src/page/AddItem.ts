@@ -1,6 +1,6 @@
 import { ElementFinder, $, ExpectedConditions, browser } from 'protractor';
 
-export class addItem {
+export class AddItem {
   private addItemButton: ElementFinder;
   private checkOutButton: ElementFinder;
 
@@ -10,7 +10,7 @@ export class addItem {
     this.checkOutButton = $('#root > div > div:nth-child(4) > div > div.checkout-button > a > div > span');
   }
 
-  public async goToSignUpMenu(): Promise<void> {
+  public async addAndCheckout(): Promise<void> {
 
     await this.addItemButton.click();
     await browser.wait(ExpectedConditions.elementToBeClickable(this.checkOutButton), 5000);

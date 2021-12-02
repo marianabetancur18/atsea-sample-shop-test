@@ -1,6 +1,6 @@
 import { $, ElementFinder } from 'protractor';
 
-export class createUser {
+export class CreateUser {
   private createUser: ElementFinder;
   
 

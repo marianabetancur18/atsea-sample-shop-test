@@ -1,6 +1,6 @@
 import { ElementFinder, $ } from 'protractor';
 
-export class signUpPage {
+export class SignUpPage {
   private signUpButton: ElementFinder;
 
   constructor () {

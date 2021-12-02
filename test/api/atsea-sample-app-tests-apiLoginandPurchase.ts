@@ -24,11 +24,13 @@ const loginRegister = {
     password: "sallypassword",
 };
 
+
 // Login & Purchase tests
 describe('Atsea shop API Endpoint Login & Purchase Requests', () => {
 
     // Variables needed for the code to be easily read
     let response;
+    let logInToken;
 
     // First test
     describe('Create Customer', () => {
@@ -52,6 +54,7 @@ describe('Atsea shop API Endpoint Login & Purchase Requests', () => {
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/json')
                 .send(loginRegister);
+            logInToken = response.body.token;
         });
 
         it('Then the customer should be logged in', () => {
@@ -60,12 +63,13 @@ describe('Atsea shop API Endpoint Login & Purchase Requests', () => {
     });
 
     // Third test
-    describe('Purchase', () => {
+    describe(`Purchase ${logInToken}`, () => {
         before(async () => {
             response = await post(`${host}/purchase/`)
                 .set('User-Agent', 'agent')
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/json')
+                .set('Authorization', `Bearer ${logInToken}`)
         });
 
         it('Then the purchase should be done', () => {

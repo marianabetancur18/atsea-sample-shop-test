@@ -6,6 +6,7 @@
       "module": "commonjs",
       "moduleResolution": "node",
       "noUnusedParameters": true,
+      "skipLibCheck": true,
       "noUnusedLocals": true
     }
   }

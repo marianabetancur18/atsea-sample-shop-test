@@ -1,5 +1,9 @@
-export { signUpPage } from './signUp-page';
-export { createUser } from './createUser';
-export { continueShoppingPage } from './continueShopping';
-export { addItem } from './AddItem';
-export { checkOutForm } from './checkOutForm';
+export { SignUpPage } from './SignUpPage';
+export { CreateUser } from './CreateUser';
+export { ContinueShoppingPage } from './ContinueShopping';
+export { AddItem } from './AddItem';
+export { CheckOutForm } from './CheckOutForm';
+export { OrderSummary } from './OrderSummary';
+export { SignOut } from './SignOut';
+export { SignInPage } from './SignInPage';
+export { SignIn } from './SignIn';

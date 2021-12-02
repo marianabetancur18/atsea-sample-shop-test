@@ -1,6 +1,6 @@
 import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
 
-export class checkOutForm {
+export class CheckOutForm {
   private createOrder: ElementFinder;
   private continueShopping: ElementFinder;
 
