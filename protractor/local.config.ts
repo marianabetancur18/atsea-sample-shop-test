@@ -3,6 +3,8 @@ import { browser, Config } from 'protractor';
 
 const firefoxConfig = {
   browserName: 'firefox',
+  marionette: true,
+  binary: "/usr/bin/firefox",
   firefoxOptions: {
     args: ['--headless', '--window-size=1920,1080']
   },
@@ -33,13 +35,13 @@ export const config: Config = {
   directConnect: true,
   mochaOpts: {
     timeout: 18000,
-	  reporter: 'mochawesome-screenshots',
+    reporter: 'mochawesome-screenshots',
     reporterOptions: {
       reportName: "report",
       multiReport: true,
     }
   },
-  getPageTimeout:30000,
+  getPageTimeout: 30000,
   onPrepare: () => {
     browser.ignoreSynchronization = true;
   }

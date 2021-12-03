@@ -28,16 +28,18 @@ describe('Open the WebPage', () => {
 
       it("Then the user should be logged out", async () => {
         await signOut.logOut();
-        // await browser.wait(EC.elementToBeClickable(createUser.getCreateUserForm()), 3000);
+        
       });
 
       describe('Sign in of the webpage', () => {
         const signInPage: Module.SignInPage = new Module.SignInPage();
         const singIn: Module.SignIn = new Module.SignIn();
 
-        it('Then the order should be set to be completed', async () => {
+        it('Then the customer should be sign in', async () => {
+          
           await signInPage.goToSignInMenu();
-          await singIn.logIn();
+          browser.sleep(5000);
+          await singIn.logIn(createUser.userget());
         });
       });
     });

@@ -1,8 +1,6 @@
-import { browser, $} from 'protractor';
+import { browser, $, ExpectedConditions} from 'protractor';
 import { protractor } from 'protractor/built/ptor';
 import * as Module from '../../src/page';
-import * as chai from 'chai';
-const expect = chai.expect;
 describe('Open the WebPage', () => {
 
   it('Then the main page of Atsea Shop was opened', async () => {
@@ -43,8 +41,9 @@ describe('Open the WebPage', () => {
         describe('Verify correct status of the order placed', () => {
           const orderSummary: Module.OrderSummary = new Module.OrderSummary();
 
-          it('Then the order status should be successful', async () => {
-            expect(orderSummary.orderCompleteness()).to.equal('You have successfully placed an order!');
+          it(`Then the order status should be successful`, async () => {
+            browser.sleep(17000);
+            ExpectedConditions.presenceOf(orderSummary.getOrderStatus());
           });
         });
       });

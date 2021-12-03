@@ -1,16 +1,16 @@
-import { $, ElementFinder } from 'protractor';
+import { $, ElementFinder, element, by } from 'protractor';
 
 export class SignIn {
   private logInForm: ElementFinder;
   
 
   constructor () {
-    this.logInForm = $('body > div:nth-child(8) > div > div > div > div > form > div.loginFormButton > button > div > span');
+    this.logInForm = $('.ReactModalPortal > div> div > div > div > form > div:nth-child(2) > button');
   }
 
-  public async logIn(): Promise<void>{
-    await $('#username-Username-undefined-38261').sendKeys('FinalWorkuser');
-    await $('#password-Password-undefined-17342').sendKeys('FinalWork');
+  public async logIn(user:Promise<string>): Promise<void>{
+    await element(by.name("username")).sendKeys(user);
+    await element(by.name("password")).sendKeys('FinalWork');
     await this.logInForm.click();
   }
 }

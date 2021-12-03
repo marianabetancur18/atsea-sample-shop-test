@@ -6,8 +6,7 @@ export class OrderSummary {
   constructor () {
     this.orderStatus = $('.successMessage');
   }
-
-  public async orderCompleteness(): Promise<String> {
-    return this.orderStatus.getText();
+  public getOrderStatus(): ElementFinder {
+    return this.orderStatus;
   }
 }
