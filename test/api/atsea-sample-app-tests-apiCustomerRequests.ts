@@ -62,7 +62,7 @@ describe('Atsea shop API Endpoint Customer Requests', () => {
   });
 
     // Third test
-    describe(`Get Customer by Name ${customerName}`, () => {
+    describe(`Get Customer by Name`, () => {
         before(async () => {
           response = await get(`${host}/api/customer/name=${customerName}`)
             .set('User-Agent', 'agent');

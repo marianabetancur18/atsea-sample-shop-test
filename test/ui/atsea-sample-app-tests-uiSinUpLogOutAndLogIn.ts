@@ -19,7 +19,7 @@ describe('Open the WebPage', () => {
       await singUpPage.goToSignUpMenu();
       // await browser.wait(EC.elementToBeClickable(createUser.getCreateUserForm()), 3000);
       await createUser.createUserOption();
-      await expect(continueShopping.userCompleteness()).toBe('Congratulations! Your account has been created!');
+  
       await continueShopping.goToShopMenu();
     });
 

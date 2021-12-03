@@ -1,9 +1,9 @@
 import { browser, Config } from 'protractor';
 
+
 const firefoxConfig = {
   browserName: 'firefox',
   firefoxOptions: {
-    binay: "/usr/bin/firefox",
     args: ['--headless', '--window-size=1920,1080']
   },
   name: 'firefox-tests',
@@ -14,7 +14,6 @@ const firefoxConfig = {
 const chromeConfig = {
   browserName: 'chrome',
   chromeOptions: {
-    binary: "/usr/bin/google-chrome",
     args: ['--headless', '--window-size=1920,1080']
   },
   name: 'chrome-tests',
@@ -31,9 +30,16 @@ export const config: Config = {
   specs: ['../test/ui/**/*.js'],
   seleniumAddress: 'http://0.0.0.0:4444',
   SELENIUM_PROMISE_MANAGER: false,
+  directConnect: true,
   mochaOpts: {
-    reporter: 'mochawesome-screenshots'
+    timeout: 18000,
+	  reporter: 'mochawesome-screenshots',
+    reporterOptions: {
+      reportName: "report",
+      multiReport: true,
+    }
   },
+  getPageTimeout:30000,
   onPrepare: () => {
     browser.ignoreSynchronization = true;
   }

@@ -1,4 +1,4 @@
-import { ElementFinder, $, ExpectedConditions, browser } from 'protractor';
+import { ElementFinder, $, ExpectedConditions, browser} from 'protractor';
 
 export class AddItem {
   private addItemButton: ElementFinder;
@@ -6,8 +6,8 @@ export class AddItem {
 
   constructor () {
     
-    this.addItemButton = $('#root > div > div:nth-child(5) > div > div:nth-child(1) > div > div.titleBottom > div.tileAdd > button > div > span:nth-child(2)');
-    this.checkOutButton = $('#root > div > div:nth-child(4) > div > div.checkout-button > a > div > span');
+    this.addItemButton = $('.tileAdd > button:nth-child(1)');
+    this.checkOutButton = $('.checkout-button > a:nth-child(1)');
   }
 
   public async addAndCheckout(): Promise<void> {

@@ -5,14 +5,13 @@ export class CreateUser {
   
 
   constructor () {
-    this.createUser = $('body > div:nth-child(6) > div > div > div > div > form > div.createFormButton > button > div > span');
+    this.createUser = $('.createFormButton > button:nth-child(1)');
   }
 
-  public async createUserOption(): Promise<String> {
-    await $('#username-ChooseauserID-undefined-48940').sendKeys('FinalWorkuser');
-    await $('#password-Chooseapassword-undefined-47871').sendKeys('FinalWork');
+  public async createUserOption(): Promise<void> {
+    await $('.createFormRow > div:nth-child(1) > div > input').sendKeys(Math.random().toString(36).substring(7).charAt(0));
+    await $('.createFormRow > div:nth-child(2) > div > input').sendKeys('FinalWork');
     await this.createUser.click();
-    return $('body > div:nth-child(6) > div > div > div > div > div.successMessage').getText();
   }
 }
 

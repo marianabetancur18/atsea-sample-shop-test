@@ -1,7 +1,8 @@
-import { browser } from 'protractor';
-// import { protractor } from 'protractor/built/ptor';
+import { browser, $} from 'protractor';
+import { protractor } from 'protractor/built/ptor';
 import * as Module from '../../src/page';
-
+import * as chai from 'chai';
+const expect = chai.expect;
 describe('Open the WebPage', () => {
 
   it('Then the main page of Atsea Shop was opened', async () => {
@@ -12,14 +13,14 @@ describe('Open the WebPage', () => {
     const singUpPage: Module.SignUpPage = new Module.SignUpPage();
     const createUser: Module.CreateUser = new Module.CreateUser();
     const continueShopping: Module.ContinueShoppingPage = new Module.ContinueShoppingPage();
-    // const EC = protractor.ExpectedConditions;
+    const EC = protractor.ExpectedConditions;
 
-    it('Then the user should be created', async () => {
-
+    it('Then the user should be created ', async () => { 
       await singUpPage.goToSignUpMenu();
       // await browser.wait(EC.elementToBeClickable(createUser.getCreateUserForm()), 3000);
       await createUser.createUserOption();
-      await expect(continueShopping.userCompleteness()).toBe('Congratulations! Your account has been created!');
+    
+      await browser.wait(EC.elementToBeClickable($('.successButton > button:nth-child(1)')), 3000);
       await continueShopping.goToShopMenu();
     });
 
@@ -36,13 +37,14 @@ describe('Open the WebPage', () => {
 
         it('Then the order should be set to be completed', async () => {
           await checkOutForm.createOrderOption();
+  
         });
 
         describe('Verify correct status of the order placed', () => {
           const orderSummary: Module.OrderSummary = new Module.OrderSummary();
 
           it('Then the order status should be successful', async () => {
-            await expect(orderSummary.orderCompleteness()).toBe('You have successfully placed an order!');
+            expect(orderSummary.orderCompleteness()).to.equal('You have successfully placed an order!');
           });
         });
       });

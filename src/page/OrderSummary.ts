@@ -4,7 +4,7 @@ export class OrderSummary {
   private orderStatus: ElementFinder;
 
   constructor () {
-    this.orderStatus = $('#root > div > div > div.successMessage');
+    this.orderStatus = $('.successMessage');
   }
 
   public async orderCompleteness(): Promise<String> {

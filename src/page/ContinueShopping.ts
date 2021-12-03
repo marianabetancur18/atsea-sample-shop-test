@@ -1,12 +1,10 @@
-import { ElementFinder, $ } from 'protractor';
+import { ElementFinder, $} from 'protractor';
 
 export class ContinueShoppingPage {
   private continueShoppingButton: ElementFinder;
-  private continueShoppingStatus: ElementFinder;
 
   constructor () {
-    this.continueShoppingStatus = $('body > div:nth-child(7) > div > div > div > div > div.successMessage');
-    this.continueShoppingButton = $('body > div:nth-child(6) > div > div > div > div > div.successButton > button > div > span');
+    this.continueShoppingButton = $('.successButton > button:nth-child(1)');
   }
 
   public async goToShopMenu(): Promise<void> {
@@ -14,7 +12,6 @@ export class ContinueShoppingPage {
     await this.continueShoppingButton.click();
   }
 
-  public async userCompleteness(): Promise<String> {
-    return this.continueShoppingStatus.getText();
-  }
+
 }
+

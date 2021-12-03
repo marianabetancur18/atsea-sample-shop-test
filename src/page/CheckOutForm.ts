@@ -1,28 +1,43 @@
-import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
+import { $, ElementFinder, browser, by, element } from 'protractor';
+import { protractor } from 'protractor/built/ptor';
 
 export class CheckOutForm {
   private createOrder: ElementFinder;
-  private continueShopping: ElementFinder;
+  
+ 
+  
 
   constructor () {
-    this.createOrder = $('#root > div > div > div.panel > div.formSection > div > form > div.infoButton > button > div > span');
-    this.continueShopping = $('#root > div > div > div.successButton > a > div > span');
+    this.createOrder = $('.infoButton > button:nth-child(2)');
+
   }
 
-  public async createOrderOption(): Promise<String> {
-    await $('#firstName-FirstName-undefined-48558').sendKeys('Luisa');
-    await $('#lastName-LastName-undefined-5530').sendKeys('Gomez');
-    await $('#cardNumber-CardNumber-undefined-28902').sendKeys('236563255');
-    await $('#cvv-CVV-undefined-61519').sendKeys('023');
-    await $('#expirationDate-MMYY-undefined-21620').sendKeys('12/10');
-    await $('#company-Company-undefined-52942').sendKeys('Las vegas company');
-    await $('#title-Title-undefined-15845').sendKeys('CEO');
-    await $('#address-Address-undefined-31264').sendKeys('Street 33 Rose avenue');
-    await $('#city-City-undefined-43339').sendKeys('Los Angeles');
+  public async createOrderOption(): Promise<void> {
+    
+    // await element(by.name("firstname")).sendkeys('l');
+    // browser.sleep(5000);
+    // const ec = protractor.expectedconditions;
+    // await element(by.name("lastname")).sendkeys('g');
+    // await browser.wait(ec.elementtobeclickable(element(by.name("cardnumber"))), 3000);
+    // await element(by.name("cardnumber")).sendkeys('2');
+    // //await element(by.name("cvv")).sendkeys('0');
+    // //await $('.infosection > form:nth-child(1) > div:nth-child(1) > div:nth-child(4) > input').sendkeys('12/10');
+    // //await $('.infosection > form:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input').sendkeys('las vegas company');
+    // //browser.sleep(5000);
+    // //await element(by.name("title")).sendkeys('ceo');
+    // //browser.sleep(5000);
+    // //await element(by.name("address")).sendkeys('street 33 rose avenue');
+    // //browser.sleep(5000);
+    // //await element(by.name("city")).sendkeys('los angeles');
+    // //browser.sleep(5000);
     await this.createOrder.click();
-    await browser.wait(ExpectedConditions.elementToBeClickable(this.continueShopping), 5000);
-    return $('#root > div > div > div.successMessage').getText();
   }
+
+
+
+
+
+  
 }
 
 

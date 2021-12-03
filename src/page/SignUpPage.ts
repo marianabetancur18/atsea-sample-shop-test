@@ -5,7 +5,7 @@ export class SignUpPage {
 
   constructor () {
     
-    this.signUpButton = $('#root > div > div:nth-child(2) > div > div.navUser > div.buttonSection > div > button:nth-child(1) > div > span');
+    this.signUpButton = $('.buttonSection > div > button:nth-child(1)');
   }
 
   public async goToSignUpMenu(): Promise<void> {

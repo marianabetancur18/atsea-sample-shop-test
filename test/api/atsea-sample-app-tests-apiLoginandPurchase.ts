@@ -1,5 +1,5 @@
 // Imported all dependencies needed
-import { post, del } from 'superagent';
+import { get, post, del } from 'superagent';
 import { StatusCodes } from 'http-status-codes';
 import { expect } from 'chai';
 
@@ -65,7 +65,7 @@ describe('Atsea shop API Endpoint Login & Purchase Requests', () => {
     // Third test
     describe(`Purchase ${logInToken}`, () => {
         before(async () => {
-            response = await post(`${host}/purchase/`)
+            response = await get(`${host}/purchase/`)
                 .set('User-Agent', 'agent')
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/json')
