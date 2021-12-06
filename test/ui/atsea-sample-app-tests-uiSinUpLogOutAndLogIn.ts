@@ -1,6 +1,22 @@
 import { browser, $ } from 'protractor';
 import { protractor } from 'protractor/built/ptor';
 import * as Module from '../../src/page';
+import { del } from 'superagent';
+import { expect } from 'chai';
+import { StatusCodes } from 'http-status-codes';
+
+const host = `http://localhost:8080`;
+
+describe('Delete customers', () => {
+  let response;
+  before(async () => {
+    response = await del(`${host}/api/customer/`)
+      .set('User-Agent', 'agent')
+  });
+  it('Then the customers should be successfully delated ', () => {
+    expect(response.status).to.equal(StatusCodes.NO_CONTENT);
+  });
+});
 
 describe('Open the WebPage', () => {
   const EC = protractor.ExpectedConditions;
