@@ -1,8 +1,9 @@
-import { browser } from 'protractor';
-// import { protractor } from 'protractor/built/ptor';
+import { browser, $ } from 'protractor';
+import { protractor } from 'protractor/built/ptor';
 import * as Module from '../../src/page';
 
 describe('Open the WebPage', () => {
+  const EC = protractor.ExpectedConditions;
 
   it('Then the main page of Atsea Shop was opened', async () => {
     await browser.get('http://localhost:8080/');
@@ -19,7 +20,7 @@ describe('Open the WebPage', () => {
       await singUpPage.goToSignUpMenu();
       // await browser.wait(EC.elementToBeClickable(createUser.getCreateUserForm()), 3000);
       await createUser.createUserOption();
-  
+      await browser.wait(EC.elementToBeClickable($('.successButton > button:nth-child(1)')), 3000);
       await continueShopping.goToShopMenu();
     });
 
