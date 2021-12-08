@@ -30,7 +30,6 @@ const multiCapabilities = [firefoxConfig, chromeConfig] ;
 
 export const config: Config = {
   multiCapabilities,
-  
   //geckoDriver: '../../node_modules/webdriver-manager/selenium/geckodriver-v0.30.0',
   framework: "mocha",
   specs: ['../test/ui/**/*.js'],
