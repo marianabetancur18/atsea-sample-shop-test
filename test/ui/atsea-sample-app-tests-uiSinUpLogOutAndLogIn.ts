@@ -22,7 +22,7 @@ describe('Open the WebPage', () => {
   const EC = protractor.ExpectedConditions;
 
   it('Then the main page of Atsea Shop was opened', async () => {
-    await browser.get('http://localhost:8080/');
+    await browser.get('http://ec2-3-141-197-146.us-east-2.compute.amazonaws.com:8080');
   });
 
   describe('Create user', () => {
