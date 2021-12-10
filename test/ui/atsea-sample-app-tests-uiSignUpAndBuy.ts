@@ -5,7 +5,7 @@ import { del } from 'superagent';
 import { expect } from 'chai';
 import { StatusCodes } from 'http-status-codes';
 
-const host = `http://localhost:8080`;
+const host = `http://ec2-3-141-197-146.us-east-2.compute.amazonaws.com:8080`;
 
 describe('Delete customers', () => {
   let response;
