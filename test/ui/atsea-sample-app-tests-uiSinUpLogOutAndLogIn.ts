@@ -5,7 +5,7 @@ import { del } from 'superagent';
 import { expect } from 'chai';
 import { StatusCodes } from 'http-status-codes';
 
-const host = `http://ec2-3-141-197-146.us-east-2.compute.amazonaws.com:8080`;
+const host = `http://ec2-18-189-66-33.us-east-2.compute.amazonaws.com:8080`;
 
 describe('Delete customers', () => {
   let response;
@@ -22,7 +22,7 @@ describe('Open the WebPage', () => {
   const EC = protractor.ExpectedConditions;
 
   it('Then the main page of Atsea Shop was opened', async () => {
-    await browser.get('http://ec2-3-141-197-146.us-east-2.compute.amazonaws.com:8080');
+    await browser.get('http://ec2-18-189-66-33.us-east-2.compute.amazonaws.com:8080');
   });
 
   describe('Create user', () => {
