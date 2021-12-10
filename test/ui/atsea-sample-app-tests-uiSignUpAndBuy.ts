@@ -21,7 +21,7 @@ describe('Delete customers', () => {
 describe('Open the WebPage', () => {
 
   it('Then the main page of Atsea Shop was opened', async () => {
-    await browser.get('ec2-18-189-66-33.us-east-2.compute.amazonaws.com');
+    await browser.get('http://ec2-18-189-66-33.us-east-2.compute.amazonaws.com:8080');
   });
 
   describe('Create user', () => {
