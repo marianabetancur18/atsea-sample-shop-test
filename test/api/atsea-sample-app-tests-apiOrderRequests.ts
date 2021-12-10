@@ -5,7 +5,7 @@ import { expect } from 'chai';
 
 
 // Host for all requests
-const host = `http://localhost:8080`;
+const host = `http://ec2-3-141-197-146.us-east-2.compute.amazonaws.com:8080`;
 
 // Obtaining current date 
 const today = new Date();
